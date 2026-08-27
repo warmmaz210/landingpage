@@ -62,7 +62,6 @@
         display: block;
         margin-bottom: 1.5rem;
         padding: 0.8rem 1rem;
-        border: 2px solid var(--border);
         border-radius: 20px;
         background: #fff;
         max-width: 520px;
@@ -77,16 +76,20 @@
 
       /* ── WATERMARK ── */
       .watermark {
-        position: absolute;
+        position: fixed;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         width: min(900px, 90vw);
         pointer-events: none;
         z-index: 0;
-        opacity: 0.08;
+        opacity: 0.06;
         user-select: none;
+        will-change: transform;
+        transition: transform 0.1s linear;
       }
+
+      body { isolation: isolate; }
 
       header, main, footer {
         position: relative;
@@ -276,6 +279,31 @@
 
       .rental-point strong { display: block; margin-bottom: 0.35rem; color: var(--secondary); }
 
+      /* ── REACTIONS ── */
+      .reactions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+      }
+
+      .reaction-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.25rem 0.65rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fff;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: background 0.15s, border-color 0.15s, transform 0.1s;
+        user-select: none;
+      }
+
+      .reaction-btn:hover { background: #fce8ea; border-color: var(--primary); transform: scale(1.06); }
+      .reaction-btn.active { background: #fce8ea; border-color: var(--primary); font-weight: 600; }
+
       /* ── REVIEWS ── */
       .reviews-grid {
         display: grid;
@@ -341,7 +369,14 @@
   <body>
 
     <!-- ═══ WATERMARK ═══ -->
-    <div class="watermark" aria-hidden="true"></div>
+    <div class="watermark" aria-hidden="true">
+      <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" fill="var(--primary)">
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+              font-family="Arial, sans-serif" font-weight="700" font-size="96" letter-spacing="8">KOMPLEKS</text>
+        <text x="50%" y="88%" dominant-baseline="middle" text-anchor="middle"
+              font-family="Arial, sans-serif" font-weight="400" font-size="36" letter-spacing="14">SP.J. · WYDMINY</text>
+      </svg>
+    </div>
 
     <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
     <header class="hero">
@@ -531,6 +566,12 @@
               <div class="rental-point">
                 <strong>Wynajem sprzętu</strong>
                 <span>Sprzęt do budowy i remontu – dostępność i warunki najlepiej potwierdzić telefonicznie.</span>
+                <div class="reactions" aria-label="Reakcje">
+                  <button class="reaction-btn" data-reaction="👍" aria-label="Lubię to" type="button">👍 <span>12</span></button>
+                  <button class="reaction-btn" data-reaction="❤️" aria-label="Świetne" type="button">❤️ <span>7</span></button>
+                  <button class="reaction-btn" data-reaction="🎉" aria-label="Super" type="button">🎉 <span>4</span></button>
+                  <button class="reaction-btn" data-reaction="💪" aria-label="Polecam" type="button">💪 <span>9</span></button>
+                </div>
               </div>
               <div class="rental-point">
                 <strong>Waga najazdowa</strong>
@@ -619,5 +660,33 @@
       </div>
     </footer>
 
+  <script>
+    /* ── Parallax watermark on scroll ── */
+    (function () {
+      var wm = document.querySelector('.watermark');
+      if (!wm) return;
+      var speed = 0.15;
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        wm.style.transform = 'translate(-50%, calc(-50% + ' + (y * speed) + 'px))';
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    /* ── Emoji reactions ── */
+    document.querySelectorAll('.reaction-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var span = btn.querySelector('span');
+        var count = parseInt(span.textContent, 10);
+        if (btn.classList.contains('active')) {
+          btn.classList.remove('active');
+          span.textContent = Math.max(0, count - 1);
+        } else {
+          btn.classList.add('active');
+          span.textContent = count + 1;
+        }
+      });
+    });
+  </script>
   </body>
 </html>
