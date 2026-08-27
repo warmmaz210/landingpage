@@ -6,19 +6,19 @@
     <title>Kompleks sp.j. | Materiały budowlane, elektryczne i hydrauliczne</title>
     <meta
       name="description"
-      content="Kompleks sp.j. w Wydminach – skład materiałów budowlanych, elektrycznych i hydraulicznych. Sprawdź ofertę, godziny otwarcia i opinie klientów."
+      content="Kompleks sp.j. w Wydminach – materiały budowlane, elektryczne i hydrauliczne oraz wynajem sprzętu budowlanego. Sprawdź ofertę, godziny otwarcia i opinie klientów."
     />
     <style>
       :root {
         color-scheme: light;
-        --bg: #f4f0e8;
+        --bg: #f3eeee;
         --surface: #fff;
-        --primary: #1f4d36;
-        --secondary: #c37a2d;
+        --primary: #c0001a;
+        --secondary: #1d1d1b;
         --text: #1d1d1b;
-        --muted: #5f615f;
-        --border: #dcd4c7;
-        --shadow: 0 18px 40px rgba(31, 77, 54, 0.12);
+        --muted: #5b5050;
+        --border: #e4c7cc;
+        --shadow: 0 18px 40px rgba(96, 0, 13, 0.14);
       }
 
       * {
@@ -29,7 +29,7 @@
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
         color: var(--text);
-        background: linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+        background: linear-gradient(180deg, #fff8f8 0%, var(--bg) 100%);
       }
 
       a {
@@ -75,7 +75,7 @@
         padding: 0.9rem 1rem;
         border: 1px solid var(--border);
         border-radius: 20px;
-        background: linear-gradient(135deg, #fff 0%, #f7f3ed 100%);
+        background: linear-gradient(135deg, #fff 0%, #fff1f3 100%);
       }
 
       .logo-mark {
@@ -90,7 +90,7 @@
         gap: 0.5rem;
         padding: 0.45rem 0.8rem;
         border-radius: 999px;
-        background: rgba(31, 77, 54, 0.1);
+        background: rgba(192, 0, 26, 0.1);
         color: var(--primary);
         font-weight: 700;
       }
@@ -145,15 +145,15 @@
       }
 
       .button-secondary {
-        background: rgba(195, 122, 45, 0.12);
-        color: #7d4a16;
+        background: rgba(29, 29, 27, 0.08);
+        color: var(--secondary);
       }
 
       .stat {
         min-width: 150px;
         padding: 1rem 1.1rem;
         border-radius: 18px;
-        background: #faf7f1;
+        background: #fff6f7;
         border: 1px solid var(--border);
       }
 
@@ -168,8 +168,8 @@
         gap: 1rem;
         padding: 1.5rem;
         background:
-          radial-gradient(circle at top left, rgba(195, 122, 45, 0.35), transparent 32%),
-          linear-gradient(160deg, rgba(31, 77, 54, 0.96), rgba(24, 40, 33, 0.92));
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 32%),
+          linear-gradient(160deg, rgba(192, 0, 26, 0.96), rgba(29, 29, 27, 0.96));
         color: #fff;
       }
 
@@ -226,9 +226,39 @@
       .contact-chip {
         padding: 0.85rem 1rem;
         border-radius: 16px;
-        background: #faf7f1;
+        background: #fff6f7;
         border: 1px solid var(--border);
         min-width: 220px;
+      }
+
+      .rental-card {
+        padding: 1.8rem;
+      }
+
+      .rental-layout {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1.5rem;
+        align-items: start;
+      }
+
+      .rental-points {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.25rem;
+      }
+
+      .rental-point {
+        padding: 1rem 1.1rem;
+        border-radius: 18px;
+        background: #fff6f7;
+        border: 1px solid var(--border);
+      }
+
+      .rental-point strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--secondary);
       }
 
       .reviews-grid {
@@ -274,7 +304,8 @@
         .hero-grid,
         .details-grid,
         .reviews-grid,
-        .footer-card {
+        .footer-card,
+        .rental-layout {
           grid-template-columns: 1fr;
           display: grid;
         }
@@ -392,6 +423,7 @@
               <li>Materiały budowlane do domu, ogrodu i inwestycji.</li>
               <li>Hydraulika i armatura do instalacji oraz remontów.</li>
               <li>Elektryka: podstawowe wyposażenie i akcesoria montażowe.</li>
+              <li>Wynajem wybranego sprzętu budowlanego do prac na miejscu i w terenie.</li>
             </ul>
           </article>
 
@@ -408,6 +440,31 @@
               >
             </div>
           </article>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="panel rental-card">
+          <div class="rental-layout">
+            <div>
+              <h2 class="section-title">Wynajem sprzętu budowlanego</h2>
+              <p class="lead" style="margin-top: 0">
+                Oprócz sprzedaży materiałów firma wspiera klientów także przy krótszych i większych
+                realizacjach, oferując wynajem sprzętu potrzebnego przy budowie, remoncie i pracach
+                porządkowych wokół posesji.
+              </p>
+            </div>
+            <div class="rental-points">
+              <div class="rental-point">
+                <strong>Na budowę i remont</strong>
+                <span>Sprzęt pomocny przy przygotowaniu podłoża, transporcie i podstawowych pracach wykonawczych.</span>
+              </div>
+              <div class="rental-point">
+                <strong>Elastyczne ustalenia</strong>
+                <span>Dostępność i warunki wynajmu najlepiej potwierdzić telefonicznie przed odbiorem.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -481,6 +538,7 @@
         <div>
           <h2>Kompleks sp.j.</h2>
           <p>Materiały budowlane, elektryczne i hydrauliczne w Wydminach.</p>
+          <p style="margin-top: 0.4rem; color: var(--muted)">Data założenia: 2004-01-29</p>
         </div>
         <a class="button button-primary" href="https://www.facebook.com/sklepkomplekswydminy/" target="_blank" rel="noreferrer">Zobacz profil firmy</a>
       </div>
