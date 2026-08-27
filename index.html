@@ -68,6 +68,22 @@
         padding: 3rem;
       }
 
+      .logo-wrap {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+        padding: 0.9rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: linear-gradient(135deg, #fff 0%, #f7f3ed 100%);
+      }
+
+      .logo-mark {
+        width: min(100%, 360px);
+        height: auto;
+        display: block;
+      }
+
       .badge {
         display: inline-flex;
         align-items: center;
@@ -290,7 +306,17 @@
     <header class="hero">
       <div class="container hero-grid">
         <section class="panel hero-copy">
-          <img src="https://github.com/user-attachments/assets/67bbbc42-2256-4978-a6a0-8745f1beceee" alt="Kompleks sp.j." style="max-width:320px;width:100%;height:auto;margin-bottom:1rem;display:block;" />
+          <div class="logo-wrap" aria-label="Logo Kompleks sp.j.">
+            <svg class="logo-mark" viewBox="0 0 420 120" role="img" aria-labelledby="logoTitle logoDesc">
+              <title id="logoTitle">Kompleks sp.j.</title>
+              <desc id="logoDesc">Czarno-czerwony logotyp firmy Kompleks sp.j. z Wydmin.</desc>
+              <rect x="0" y="8" width="98" height="98" rx="24" fill="#1d1d1b" />
+              <path d="M30 28h18v24l23-24h24L66 58l31 34H72L48 65v27H30z" fill="#d11f1f" />
+              <rect x="118" y="20" width="286" height="18" rx="9" fill="#d11f1f" />
+              <text x="118" y="76" fill="#1d1d1b" font-size="44" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">KOMPLEKS</text>
+              <text x="120" y="102" fill="#5f615f" font-size="16" font-weight="700" font-family="Arial, Helvetica, sans-serif" letter-spacing="4">SP.J. • WYDMINY</text>
+            </svg>
+          </div>
           <span class="badge">Skład materiałów budowlanych</span>
           <h1>Kompleks sp.j. – materiały budowlane, elektryczne i hydrauliczne</h1>
           <p class="lead">
