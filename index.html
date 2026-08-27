@@ -6,7 +6,7 @@
     <title>Kompleks sp.j. | Materiały budowlane, opał, nawozy, stal, skup złomu – Wydminy</title>
     <meta
       name="description"
-      content="Kompleks sp.j. w Wydminach – materiały budowlane, elektryczne, hydrauliczne, opał (węgiel, pellet), nawozy, stal, skup złomu, waga najazdowa dla TIR-ów, transport. Godziny otwarcia i kontakt."
+      content="Kompleks sp.j. w Wydminach – materiały budowlane, elektryczne, hydrauliczne, opał (węgiel, pellet), nawozy, stal, skup złomu, waga najazdowa, transport. Godziny otwarcia i kontakt."
     />
     <style>
       :root {
@@ -28,6 +28,7 @@
         font-family: Arial, Helvetica, sans-serif;
         color: var(--text);
         background: linear-gradient(180deg, #fff8f8 0%, var(--bg) 100%);
+        position: relative;
       }
 
       a { color: inherit; }
@@ -60,10 +61,10 @@
       .logo-wrap {
         display: block;
         margin-bottom: 1.5rem;
-        padding: 1rem 1.2rem;
+        padding: 0.8rem 1rem;
         border: 2px solid var(--border);
         border-radius: 20px;
-        background: linear-gradient(135deg, #fff 0%, #fff1f3 100%);
+        background: #fff;
         max-width: 520px;
       }
 
@@ -72,6 +73,24 @@
         max-width: 500px;
         height: auto;
         display: block;
+      }
+
+      /* ── WATERMARK ── */
+      .watermark {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(900px, 90vw);
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.08;
+        user-select: none;
+      }
+
+      header, main, footer {
+        position: relative;
+        z-index: 1;
       }
 
       .badge {
@@ -321,6 +340,16 @@
   </head>
   <body>
 
+    <!-- ═══ WATERMARK ═══ -->
+    <div class="watermark" aria-hidden="true">
+      <img
+        src="https://github.com/user-attachments/assets/e390d631-6599-4495-b0b9-ddef30661002"
+        alt=""
+        width="900"
+        style="width:100%;height:auto;display:block;"
+      />
+    </div>
+
     <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
     <header class="hero">
       <div class="container hero-grid">
@@ -328,29 +357,20 @@
         <!-- LEFT: logo + headline + CTA -->
         <section class="panel hero-copy">
           <div class="logo-wrap" aria-label="Logo Kompleks sp.j.">
-            <svg class="logo-mark" viewBox="0 0 560 160" role="img" aria-labelledby="logoTitle logoDesc">
-              <title id="logoTitle">Kompleks sp.j.</title>
-              <desc id="logoDesc">Czarno-czerwony logotyp firmy Kompleks sp.j. z Wydmin.</desc>
-              <!-- K mark block -->
-              <rect x="0" y="4" width="138" height="138" rx="28" fill="#1d1d1b" />
-              <!-- K letter, red -->
-              <path d="M38 30h26v36l32-36h34L88 82l46 50H97L62 90v42H38Z" fill="#d11f1f" />
-              <!-- red rule -->
-              <rect x="158" y="22" width="390" height="20" rx="10" fill="#d11f1f" />
-              <!-- KOMPLEKS -->
-              <text x="158" y="100" fill="#1d1d1b" font-size="62" font-weight="700"
-                    font-family="Arial,Helvetica,sans-serif" letter-spacing="2">KOMPLEKS</text>
-              <!-- SP.J. • WYDMINY -->
-              <text x="160" y="136" fill="#5f615f" font-size="22" font-weight="700"
-                    font-family="Arial,Helvetica,sans-serif" letter-spacing="5">SP.J. • WYDMINY</text>
-            </svg>
+            <img
+              class="logo-mark"
+              src="https://github.com/user-attachments/assets/9c374c3b-8c6f-4d1e-99cf-7678f03ba4f4"
+              alt="Kompleks sp.j. – logotyp"
+              width="500"
+              height="143"
+            />
           </div>
 
           <span class="badge">Skład materiałów budowlanych – Wydminy</span>
           <h1>Kompleks sp.j.</h1>
           <p class="lead">
             Materiały budowlane, elektryczne i hydrauliczne, opał, nawozy, stal, skup złomu
-            – wszystko w jednym miejscu w Wydminach. Własny transport i waga najazdowa dla pojazdów ciężarowych.
+            – wszystko w jednym miejscu w Wydminach. Własny transport i waga najazdowa.
           </p>
           <div class="stats">
             <div class="stat"><strong>4 530</strong><span>opinii klientów</span></div>
@@ -389,7 +409,7 @@
             <h2>Dlaczego Kompleks?</h2>
             <p>
               Szeroka oferta pod jednym dachem – od materiałów budowlanych, przez opał i nawozy,
-              po skup złomu. Własny transport i waga najazdowa do 40 t dla TIR-ów.
+              po skup złomu. Własny transport i waga najazdowa do 40 t.
             </p>
           </div>
         </aside>
@@ -448,8 +468,8 @@
 
           <div class="svc-card">
             <span class="svc-icon">⚖️</span>
-            <h3>Waga najazdowa TIR</h3>
-            <p>Waga najazdowa do pojazdów ciężarowych – możliwość ważenia aut i ładunków na miejscu. Wyniki ważenia z wydrukowanym protokołem.</p>
+            <h3>Waga najazdowa</h3>
+            <p>Waga najazdowa do pojazdów ciężarowych – możliwość ważenia aut i ładunków na miejscu.</p>
           </div>
 
         </div>
@@ -521,7 +541,7 @@
               </div>
               <div class="rental-point">
                 <strong>Waga najazdowa</strong>
-                <span>Możliwość ważenia pojazdów ciężarowych i ładunków na naszym terenie. Wydruk protokołu ważenia.</span>
+                <span>Możliwość ważenia pojazdów ciężarowych i ładunków na naszym terenie.</span>
               </div>
             </div>
           </div>
