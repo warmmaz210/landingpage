@@ -11,14 +11,15 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f3eeee;
+        --bg: #eef3f1;
         --surface: #fff;
-        --primary: #c0001a;
-        --secondary: #1d1d1b;
-        --text: #1d1d1b;
-        --muted: #5b5050;
-        --border: #e4c7cc;
-        --shadow: 0 18px 40px rgba(96, 0, 13, 0.14);
+        --primary: #b42318;
+        --secondary: #1f2a24;
+        --text: #1f2a24;
+        --muted: #5a6b63;
+        --border: #d5e2dc;
+        --accent-soft: #f3faf6;
+        --shadow: 0 18px 40px rgba(31, 42, 36, 0.1);
       }
 
       * { box-sizing: border-box; }
@@ -27,7 +28,7 @@
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
         color: var(--text);
-        background: linear-gradient(180deg, #fff8f8 0%, var(--bg) 100%);
+        background: linear-gradient(180deg, #f7fbf9 0%, var(--bg) 100%);
         position: relative;
       }
 
@@ -61,9 +62,6 @@
       .logo-wrap {
         display: block;
         margin-bottom: 1.5rem;
-        padding: 0.8rem 1rem;
-        border-radius: 20px;
-        background: #fff;
         max-width: 520px;
       }
 
@@ -102,7 +100,7 @@
         gap: 0.5rem;
         padding: 0.45rem 0.9rem;
         border-radius: 999px;
-        background: rgba(192, 0, 26, 0.1);
+        background: rgba(180, 35, 24, 0.1);
         color: var(--primary);
         font-weight: 700;
         font-size: 0.9rem;
@@ -151,7 +149,7 @@
         min-width: 145px;
         padding: 1rem 1.1rem;
         border-radius: 18px;
-        background: #fff6f7;
+        background: var(--accent-soft);
         border: 1px solid var(--border);
       }
 
@@ -168,8 +166,8 @@
         gap: 1rem;
         padding: 1.5rem;
         background:
-          radial-gradient(circle at top left, rgba(255,255,255,.12), transparent 32%),
-          linear-gradient(160deg, rgba(192,0,26,.96), rgba(29,29,27,.96));
+          radial-gradient(circle at top left, rgba(255,255,255,.14), transparent 34%),
+          linear-gradient(160deg, rgba(47, 107, 84, 0.96), rgba(31, 42, 36, 0.96));
         color: #fff;
       }
 
@@ -223,10 +221,24 @@
       .contact-chip {
         padding: 0.85rem 1rem;
         border-radius: 16px;
-        background: #fff6f7;
+        background: var(--accent-soft);
         border: 1px solid var(--border);
         min-width: 220px;
         display: inline-block;
+      }
+
+      .company-ids {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .company-ids strong {
+        color: var(--secondary);
+        font-weight: 700;
       }
 
       /* ── SERVICES GRID (2×4) ── */
@@ -273,36 +285,76 @@
       .rental-point {
         padding: 1rem 1.1rem;
         border-radius: 18px;
-        background: #fff6f7;
+        background: var(--accent-soft);
         border: 1px solid var(--border);
       }
 
       .rental-point strong { display: block; margin-bottom: 0.35rem; color: var(--secondary); }
 
-      /* ── REACTIONS ── */
-      .reactions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-top: 0.75rem;
+      /* ── RENTAL HOVER DETAILS ── */
+      .rental-hover {
+        position: relative;
+        cursor: help;
+        transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
       }
 
-      .reaction-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        padding: 0.25rem 0.65rem;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: #fff;
-        cursor: pointer;
-        font-size: 0.85rem;
-        transition: background 0.15s, border-color 0.15s, transform 0.1s;
-        user-select: none;
+      .rental-hover:hover,
+      .rental-hover:focus-within {
+        border-color: #9fc3b4;
+        background: #eaf6f0;
+        box-shadow: 0 10px 24px rgba(47, 107, 84, 0.12);
       }
 
-      .reaction-btn:hover { background: #fce8ea; border-color: var(--primary); transform: scale(1.06); }
-      .reaction-btn.active { background: #fce8ea; border-color: var(--primary); font-weight: 600; }
+      .rental-tooltip {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 0.55rem);
+        z-index: 5;
+        padding: 0.9rem 1rem;
+        border-radius: 14px;
+        background: #1f2a24;
+        color: #fff;
+        box-shadow: 0 14px 28px rgba(31, 42, 36, 0.22);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(6px);
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+        pointer-events: none;
+      }
+
+      .rental-tooltip::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 1.4rem;
+        width: 12px;
+        height: 12px;
+        background: #1f2a24;
+        transform: rotate(45deg);
+      }
+
+      .rental-hover:hover .rental-tooltip,
+      .rental-hover:focus-within .rental-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .rental-tooltip strong {
+        display: block;
+        margin-bottom: 0.45rem;
+        color: #fff;
+        font-size: 0.92rem;
+      }
+
+      .rental-tooltip ul {
+        margin: 0;
+        padding-left: 1.05rem;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
 
       /* ── REVIEWS ── */
       .reviews-grid {
@@ -542,6 +594,11 @@
                  target="_blank" rel="noreferrer">Facebook firmy</a>
             </div>
             <p style="margin-top:1rem;font-size:.9rem">Zapraszamy pon.–pt. 07:00–16:00 i soboty 07:00–13:00.</p>
+            <div class="company-ids" aria-label="Dane rejestrowe firmy">
+              <div><strong>NIP:</strong> 8451783190</div>
+              <div><strong>REGON:</strong> 511359783</div>
+              <div><strong>KRS:</strong> 0000191613</div>
+            </div>
           </article>
 
         </div>
@@ -563,14 +620,16 @@
                 <strong>Dostawa na budowę</strong>
                 <span>Własne pojazdy ciężarowe – dowozimy materiały budowlane, opał i nawozy pod wskazany adres.</span>
               </div>
-              <div class="rental-point">
+              <div class="rental-point rental-hover" tabindex="0" aria-describedby="rental-equipment-list">
                 <strong>Wynajem sprzętu</strong>
-                <span>Sprzęt do budowy i remontu – dostępność i warunki najlepiej potwierdzić telefonicznie.</span>
-                <div class="reactions" aria-label="Reakcje">
-                  <button class="reaction-btn" data-reaction="👍" aria-label="Lubię to" type="button">👍 <span>12</span></button>
-                  <button class="reaction-btn" data-reaction="❤️" aria-label="Świetne" type="button">❤️ <span>7</span></button>
-                  <button class="reaction-btn" data-reaction="🎉" aria-label="Super" type="button">🎉 <span>4</span></button>
-                  <button class="reaction-btn" data-reaction="💪" aria-label="Polecam" type="button">💪 <span>9</span></button>
+                <span>Sprzęt do budowy i remontu – najedź, aby zobaczyć listę. Dostępność i warunki najlepiej potwierdzić telefonicznie.</span>
+                <div class="rental-tooltip" id="rental-equipment-list" role="tooltip">
+                  <strong>Dostępny sprzęt</strong>
+                  <ul>
+                    <li>Młot udarowy</li>
+                    <li>Zagęszczarka mała</li>
+                    <li>Zagęszczarka duża</li>
+                  </ul>
                 </div>
               </div>
               <div class="rental-point">
@@ -653,6 +712,7 @@
           <h2>Kompleks sp.j.</h2>
           <p>Materiały budowlane, opał, nawozy, stal, skup złomu – Wydminy od 2004 r.</p>
           <p style="margin-top:.4rem;color:var(--muted)">ul. Składowa 9, 11-510 Wydminy · tel. 87 421 00 91</p>
+          <p style="margin-top:.35rem;color:var(--muted);font-size:.9rem">NIP: 8451783190 · REGON: 511359783 · KRS: 0000191613</p>
         </div>
         <a class="button button-primary"
            href="https://www.facebook.com/sklepkomplekswydminy/"
@@ -672,21 +732,6 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
-
-    /* ── Emoji reactions ── */
-    document.querySelectorAll('.reaction-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var span = btn.querySelector('span');
-        var count = parseInt(span.textContent, 10);
-        if (btn.classList.contains('active')) {
-          btn.classList.remove('active');
-          span.textContent = Math.max(0, count - 1);
-        } else {
-          btn.classList.add('active');
-          span.textContent = count + 1;
-        }
-      });
-    });
   </script>
   </body>
 </html>
